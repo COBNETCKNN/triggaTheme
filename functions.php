@@ -204,3 +204,14 @@ if ( ! function_exists( 'twentytwentyfour_pattern_categories' ) ) :
 endif;
 
 add_action( 'init', 'twentytwentyfour_pattern_categories' );
+
+/* CUSTOM CODE STARTS FROM HERE */
+// Enqueing JS and CSS files 
+function triggaTheme_files() {
+	//enqueue CSS files
+	wp_enqueue_style('mainCSS', get_template_directory_uri() . 'assets/css/main.css', array(), '1.0');
+
+	//enqueue JS files
+	wp_enqueue_script('mainJS', get_stylesheet_directory_uri() . 'assets/js/main.js', array(), 1.0, true);
+}
+add_action('wp_enqueue_scripts', 'triggaTheme_files');
