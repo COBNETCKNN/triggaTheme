@@ -209,12 +209,29 @@ add_action( 'init', 'twentytwentyfour_pattern_categories' );
 // Enqueing JS and CSS files 
 function triggaTheme_files() {
 	//enqueue CSS files
-	wp_enqueue_style('mainCSS', get_template_directory_uri() . 'assets/css/main.css', array(), '1.0');
+	wp_enqueue_style('mainCSS', get_template_directory_uri() . '/assets/css/main.css', array(), '1.0');
 
 	//enqueue JS files
-	wp_enqueue_script('mainJS', get_stylesheet_directory_uri() . 'assets/js/main.js', array(), 1.0, true);
+	wp_enqueue_script('mainJS', get_stylesheet_directory_uri() . '/assets/js/main.js', array(), 1.0, true);
 }
 add_action('wp_enqueue_scripts', 'triggaTheme_files');
 
 // Registration of Custom Post Types
 require_once('partials/post-types.php');
+
+add_action( 'after_setup_theme', function() { 
+    add_theme_support( 'align-wide' );
+} ); 
+
+/** 
+// Enqueing the block script for Accordion block
+function custom_faq_accordion_block() {
+    wp_enqueue_script(
+        'custom-faq-accordion',
+        get_template_directory_uri() . '/blocks/questions-accordion.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor' ),
+        filemtime( get_template_directory() . '/blocks/questions-accordion.js' )
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'custom_faq_accordion_block' );
+*/
