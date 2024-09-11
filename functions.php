@@ -223,15 +223,9 @@ add_action( 'after_setup_theme', function() {
     add_theme_support( 'align-wide' );
 } ); 
 
-/** 
-// Enqueing the block script for Accordion block
-function custom_faq_accordion_block() {
-    wp_enqueue_script(
-        'custom-faq-accordion',
-        get_template_directory_uri() . '/blocks/questions-accordion.js',
-        array( 'wp-blocks', 'wp-element', 'wp-editor' ),
-        filemtime( get_template_directory() . '/blocks/questions-accordion.js' )
-    );
+//Enqueing stylings for elements inside Gutenberg editor
+function triggaTheme_editor_styles() {
+    add_theme_support('editor-styles');
+    add_editor_style('/assets/css/editor.css');
 }
-add_action( 'enqueue_block_editor_assets', 'custom_faq_accordion_block' );
-*/
+add_action('after_setup_theme', 'triggaTheme_editor_styles');

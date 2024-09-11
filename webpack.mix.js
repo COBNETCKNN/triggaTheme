@@ -4,7 +4,8 @@ let mix = require('laravel-mix');
 mix
     .js("src/app.js", "assets/js/main.js")
     .babel("src/app.js", "assets/js/main.js")
-    .sass('src/app.scss', 'assets/css/main.css');
+    .sass('src/app.scss', 'assets/css/main.css')
+    .sass('src/editor.scss', 'assets/css/editor.css');
 
 mix
     .browserSync({
